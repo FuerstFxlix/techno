@@ -14,7 +14,7 @@
     <div id="viewCount"></div>
     YouTube Video Count
     <div id="videoCount"></div>
-    <script>
+    <script id="remv">
         const APIKey = 'AIzaSyCIIQ3y4dzocUMaXlqrKZSPJ3H6avK4Cw4';
         const Userid = 'UCFAiFyGs6oDiF1Nf-rRJpZA';
         const subscriberCount = document.getElementById('subscriberCount');
@@ -35,6 +35,7 @@
                 })
         }
         getdata();
+        document.getElementById('remv').remove();
     </script>
 </body>
 
