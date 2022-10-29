@@ -1,0 +1,49 @@
+#playButton {
+    width: 100px;
+    height: 40px;
+    background-color: rgb(255, 170, 0);
+    padding: 10px 0px 0px 0px;
+    color: white;
+    font-family: 'Minecraft';
+    transition: all .15s ease-in-out;
+    margin-left: 710px;
+    text-align: center;
+}
+
+#playButton:hover {
+    padding: 10px 5px 0px 5px;
+    transform: scale(1.1);
+    transform: rotate(4deg);
+    cursor: pointer;
+}
+
+#title-screen {
+    width: 1520px;
+    height: 680px;
+    margin: 200px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: rgb(255, 170, 0);
+}
+
+#canv {
+    width: 1520px;
+    height: 680px;
+    margin: 200px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: rgb(255, 170, 0);
+}
+
+#ph-1 {
+    width: 1520px;
+    height: 320px;
+}
+
+#hidden {
+    display: none;
+}
+
+.hide {
+    display: none;
+}

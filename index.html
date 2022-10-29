@@ -1,42 +1,170 @@
 <html>
 
 <head>
-<style>
 
+    <style>
+        @font-face {
+            font-family: 'Minecraft';
+            src: url('minecraft.TTF');
+        }
+        
+        body {
+            overflow: hidden;
+            background: rgb(6, 0, 108);
+            background: linear-gradient(100deg, rgba(6, 0, 108, 1) 0%, rgba(0, 0, 39, 1) 35%, rgba(0, 5, 22, 1) 100%);
+            color: white;
+            font-family: 'Minecraft';
+        }
+        
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+        
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+        
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            left: 5%;
+        }
+        
+        .switch #background {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        .switch::before {
+            content: "Background";
+        }
+        
+        #background:checked+.slider {
+            background-color: #2196F3;
+        }
+        
+        #background:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        
+        #background:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+        
+        #paintColor {
+            padding-left: 100px;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
 
-</style>
 </head>
 
 <body>
-    YouTube Subscribers
-    <div id="subscriberCount"></div>
-    YouTube Video Views
-    <div id="viewCount"></div>
-    YouTube Video Count
-    <div id="videoCount"></div>
-    <script id="remv">
-        const APIKey = 'AIzaSyCIIQ3y4dzocUMaXlqrKZSPJ3H6avK4Cw4';
-        const Userid = 'UCFAiFyGs6oDiF1Nf-rRJpZA';
-        const subscriberCount = document.getElementById('subscriberCount');
-        const viewCount = document.getElementById('viewCount');
-        const videoCount = document.getElementById('videoCount');
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <label class="switch">
+            <input type="color" id="paintColor">
+            <input type="checkbox" id="background">
+            
+            <span class="slider"></span>
+          </label>
+    </div>
+    <span style="font-size:50px;cursor:pointer;padding-left: 10px;" onclick="openNav()">&#9776;</span>
 
-        let getdata = () => {
-            fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${Userid}&key=${APIKey}`)
-                .then(response => {
-                    return response.json()
-                })
-                .then(data => {
-                    console.log(data);
-                    subscriberCount.innerHTML = data["items"][0].statistics.subscriberCount;
-                    viewCount.innerHTML = data["items"][0].statistics.viewCount;
-                    videoCount.innerHTML = data["items"][0].statistics.videoCount;
-
-                })
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
         }
-        getdata();
-        document.getElementById('remv').remove();
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+    <div id="title-screen" class="title-screen" onclick="closeNav()">
+        <div id="ph-1"></div>
+        <div id="playButton" class="playb">Play</div>
+
+    </div>
+
+    <canvas id="canv" width="1500" height="700" class="hide game" onclick="closeNav()"></canvas>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="paint.js"></script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "500px";
+        }
+
+        /* Set the width of the side navigation to 0 */
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
     </script>
 </body>
+
 
 </html>
