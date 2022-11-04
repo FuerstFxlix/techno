@@ -150,7 +150,14 @@ window.addEventListener("mousemove", function(e) {
         color = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
     }
 });
+window.addEventListener("dragstart", function(e) {
+ draw = true;
+ mouseX = e.clientX - canvas.getBoundingClientRect().left - canvas.clientLeft;
+    mouseY = e.clientY - canvas.getBoundingClientRect().top - canvas.clientTop;
 
+ })
+window.addEventListener("dragend", function(e) {
+draw = false; })
 canvas.addEventListener("contextmenu", function(e) {
     e.preventDefault();
 })
